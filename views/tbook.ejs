@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/header'); -%>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/book_table_styles.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body style="background-color: rgb(26, 25, 25);">
+
+    <%- include('partials/nav'); -%>
+   <div class="baap" style="background-image: url(images/e1.jpg); " >
+   
+      <div class="bt_cont" style="margin-bottom : 58px">
+        <h2 style="text-align: center;">Grab Your Table!</h2>
+        <h4>Avoid standing in a line!</h4>
+        <h4>Reserve a table in advance.</h4>
+            <br>
+            <div class="unfor">
+                <form action="/tbook" method="post">
+                    <div class="matter">
+                        <div class="input_details">
+                            <span class="details">Name</span>
+                            <input type="text" id = "btname" placeholder="Your Name" name="name" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Mobile Number</span>
+                            <input type="text" id = "btmob" placeholder="Your Mobile Number" name="mobile_number" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Party Size</span>
+                            <input type="text" id = "btpsize" placeholder="Number of People" name="btparty" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Date</span>
+                            <input type="date" id = "btdate" placeholder="Choose Date" name="btdate" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Time</span>
+                            <select id="time_details" name="times">
+                                <option value="am">Choose Time</option>
+                                <option value="am900">9:00 AM</option>
+                                <option value="am930">9:30 AM</option>
+                                <option value="am1000">10:00 AM</option>
+                                <option value="am1030">10:30 AM</option>
+                                <option value="pm1230">12:30 PM</option>
+                                <option value="pm100">1:00 PM</option>
+                                <option value="pm130">1:30 PM</option>
+                                <option value="pm200">2:00 PM</option>
+                                <option value="pm230">2:30 PM</option>
+                                <option value="pm300">3:00 PM</option>
+                                <option value="pm700">7:00 PM</option>
+                                <option value="pm730">7:30 PM</option>
+                                <option value="pm800">8:00 PM</option>
+                                <option value="pm830">8:30 PM</option>
+                                <option value="pm900">9:00 PM</option>
+                                <option value="pm930">9:30 PM</option>
+                                <option value="pm1000">10:00 PM</option>
+                              </select>
+                        </div>
+                        <div class="butt">
+                         <div class="col-md-12 mt-3">
+                  <div id="btn-order-container"class="form-group">
+                    <input type="submit" id="btn-order" value="Book table!" class="btn btn-primary py-3 px-5">
+                  </div>
+                    </div>
+                        </div>
+                   
+                </form>
+            </div>
+    </div>
+    </div>
+    </div>
+    <%- include('partials/script'); -%>
+  <!-- loader -->
+  
+      <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3 offset-lg-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Indiflav</h2>
+              <p>Welcome to our online Restaurant ! Hope you enjoy our services of booking table ,ordering food !</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://instagram.com/neerudu_pavan?utm_medium=copy_link"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+		  </div>
+		  
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Hours</h2>
+              <ul class="list-unstyled open-hours">
+                <li class="d-flex"><span>Monday</span><span>9:00 - 24:00</span></li>
+                <li class="d-flex"><span>Tuesday</span><span>9:00 - 24:00</span></li>
+                <li class="d-flex"><span>Wednesday</span><span>9:00 - 24:00</span></li>
+                <li class="d-flex"><span>Thursday</span><span>9:00 - 24:00</span></li>
+                <li class="d-flex"><span id="fuck">Friday</span><span>9:00 - 02:00</span></li>
+                <li class="d-flex"><span id="fuck">Saturday</span><span>9:00 - 02:00</span></li>
+                <li class="d-flex" ><span id="fuck">Sunday</span><span> Closed</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+		<div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by 197256,197236,197173,197134
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+	
+    <script>
+
+	(function(){
+
+		$('#btn-order').click(function(event){
+
+			if(event)
+			{
+				event.preventDefault();
+
+				var order = {
+					name: $(btname).val(),
+					mobile_number: $(btmob).val(),
+					btparty: $(btpsize).val(),
+					btdate: $(btdate).val(),
+					times: $(time_details).val(),
+
+				}
+				console.log(JSON.stringify(order));
+
+				$.ajax({
+					url:'/tbook',
+					method: 'POST',
+					data: order,
+					success: function(resp){
+						console.log('order received'+ JSON.stringify(order));
+
+						$("#btn-order-container").html('<h3>Table booked!</h3>');
+					},
+					error: function(resp){
+						console.log('error');
+					}
+				})
+			}
+		})
+	})();
+	</script>
+
+   
+</body>
+
+</html>

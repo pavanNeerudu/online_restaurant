@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/header'); -%>
+    <meta charset="UTF-8">
+   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">v-->
+    <link rel="stylesheet" href="css/deliveryd.css">
+    <title>Indiflav</title>
+</head>
+<body style="background-color: rgb(26, 25, 25);">
+
+	
+    <div class="bt_cont" style="margin : 100px 100px;">
+        <h2 style="text-align: center;">Delivery Details</h2>
+        <h4>Schedule your food delivery by setting date and time</h4>
+        <br>
+        <div style="display: flex;align-items:center;font-weight: bold;">
+         <!--   <h4 style="text-align: center;font-weight: bold;">Subtotal:{{global.total}}</h4>
+			                <label for="subt" id="amt" style="padding-left : 1%;"></label>-->
+        </div>
+            <br>
+            <div class="unfor">
+                <form method="post" action="/paynow">
+                    <div class="matter">
+                        <div class="input_details">
+                            <span class="details">Name</span>
+                            <input type="text" id = "dtname" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Mobile Number</span>
+                            <input type="text" id = "dtmob" name="phone" placeholder="Your Mobile Number" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Delivery Address</span>
+                            <input type="text" id = "dtadd" name="address" placeholder="Your Delivery Address" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Date (For Scheduled Delivery)</span>
+                            <input type="date" id = "dtdate" name="date" placeholder="Choose Date" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Time (For Scheduled Delivery)</span>
+                            <input type="text" id = "dttime" name="time"  placeholder="Time of Delivery" required>
+                        </div>
+                        <div class="input_details">
+                            <span class="details">Suggestions</span>
+                            <input type="textbox" id = "dtsuggestions" name="suggestions" placeholder="Your Suggestions" required>
+                        </div>
+                    </div>
+                      
+                    <div class="mopd">
+                        <input type="radio" name="MOPC"  id="rad-1">
+                        <input type="radio" name="MOPC"  id="rad-2">
+                        <span class="moptitle">Mode of Payment</span>
+                        <div class="cat">
+                            <label for="rad-1">
+                                <span class="rad  one"></span>
+                                <span class="mopc">Cash On Delivery</span>
+                            </label>
+                            <label for="rad-2">
+                                <span class="rad  two"></span>
+                                <span class="mopc">Online Payment</span>
+                            </label>
+                        </div>
+                    </div>
+                      <div class="col-md-12 mt-3">
+                  <div id="btn-order-container"class="form-group">
+                    <input type="submit" id="fuck" value="Order!" class="btn btn-primary py-3 px-5">
+                  </div>
+                    </div>
+                </form>
+               
+               
+            </div>
+    </div>
+	
+     
+    <%- include('partials/script'); -%>
+    	<script>
+  
+	(function(){
+
+		$('#fuck').click(function(event){
+
+			//event.preventDefault();
+		
+			if(event&&document.getElementById("rad-1").checked)
+			{
+				event.preventDefault();
+				
+					
+				var order = {
+					name:$('#dtname').val(),
+					phone:$('#dtmob').val(),
+                    address:$('#dtadd').val(),
+                    date:$('#dtdate').val(),
+                    time:$('#dttime').val(),
+                    suggestions:$('#dtsuggestions').val(),
+
+
+				}
+				//var fck=document.getElementsByClassName("reset");
+				//console.log(fck[0].value);
+				//console.log(a1);
+				//console.log(a2);
+				//console.log(document.getElementById("rad-1").checked);
+
+				$.ajax({
+					url:'/paynow',
+					method: 'POST',
+					data: order,
+					success: function(resp){
+						
+
+                        $("#btn-order-container").html('<h3>Order received!</h3>');
+						
+						/*$.get('/pmt', (req, res,next)=>{
+								console.log("hello");
+    							
+							})*/
+						//console.log($("#btn-checkout"));
+						//$('#btn-checkout').prop('id', 'fckoff'),
+						//$('#fckoff').prop('href', '/pmt')
+					},
+					error: function(resp){
+						console.log('error');
+					}
+				})
+			 /*	axios({
+            		method: 'post',
+            		url: '/menu',
+            		data: order
+				 });*/
+
+			}
+			
+		})
+	})();
+	</script>
+	
+
+</body>
+</html>
