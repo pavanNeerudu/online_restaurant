@@ -1,1 +1,1 @@
-# online_restaurant
+This is a website for a fictional restaurant. The restaurant website allows users to browse the restaurant menu and order their meals, book a table at the restaurant as well as give feedback to the restaurant. The website was build using HTML, CSS, JavaScript and MongoDB. Various Software Engineering concepts such as Work Break Structure, Project Scheduling, Software Requirements Specification, Life Cycle Models and Testing were also used. The website is deployed at [here](http://indiflav.herokuapp.com/). We call it **Indiflav.**
